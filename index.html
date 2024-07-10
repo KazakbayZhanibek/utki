@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Утки</title>
+	<style type="text/css">
+		
+	</style>
+
+</head>
+<body>
+	<div class="main">
+		<button class="startBtn" onclick="start()">
+			Начать игру
+		</button>
+
+		<div class="txt">
+			<h1> Количетсво уток</h1>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+	let score = 0;
+
+	let txt = document.querySelector(".txt")
+
+	let interval;
+
+	function start(){
+		document.querySelector(".startBtn").style.display = "none"
+		interval = setInterval(create,1000)
+    }
+
+    function create(){
+    	let main = document.querySelector(".main")
+    	let new_block = document.createElement("div")
+    	new_block.style.position = "absolute"
+    	new_block.style.backgroundImage = "url('999.png')";
+    	new_block.style.backgroundSize = '100% 100%'
+    	new_block.style.width = "100px";
+    	new_block.style.height = "100px";
+    	new_block.style.left = getRandom(1000) + "px" 
+    	new_block.style.top = getRandom(10) + "px"
+    	main.appendChild(new_block)
+    	new_block.onclick = function(){ 
+			new_block.style.display = "none"
+			score = score + 1;
+			txt.innerHTML = score 
+	   }
+    }
+
+    function getRandom(arg){ 
+    	let run = Math.round(Math.random()*arg)
+    	return run;
+    }
+
+
+	</script>
+
+</body>
+</html>
